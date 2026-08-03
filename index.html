@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NLP Knowledge Artifact Repository for Week 1 - Comprehensive Educational Guide on Text Preprocessing, Feature Engineering, Language Representations, and Language Models.">
+  <title>NLP Knowledge Artifact Repository – Week 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <div class="header-wrapper">
+    <header>
+      <div class="logo-area">
+        <!-- SVG Logo: Brain & Network -->
+        <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 19H11V17H13V19ZM13 15H11V7H13V15Z"/>
+        </svg>
+        <div class="logo-text">
+          <h1>NLP Artifacts</h1>
+          <p>Week 1 Study Guide</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="search-container">
+          <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.5L20.5 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"/>
+          </svg>
+          <input type="text" id="concept-search" class="search-input" placeholder="Search NLP concepts...">
+        </div>
+
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider">
+              <!-- Sun Icon -->
+              <svg class="slider-icon sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13L2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13L20,13z M11,2l0,2c0,0.55,0.45,1,1,1s1-0.45,1-1l0-2c0-0.55-0.45-1-1-1S11,1.45,11,2L11,2z M11,20l0,2c0,0.55,0.45,1,1,1s1-0.45,1-1l0-2c0-0.55-0.45-1-1-1S11,19.45,11,20L11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0s-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0s-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L18.36,16.95L18.36,16.95z M7.05,18.36l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0l1.06-1.06c0.39-0.39,0.39-1.03,0-1.41S7.44,17.97,7.05,18.36L7.05,18.36z M19.42,5.99l-1.06-1.06c-0.39-0.39-1.03-0.39-1.41,0s-0.39,1.02,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0S19.81,6.38,19.42,5.99L19.42,5.99z"/></svg>
+              <!-- Moon Icon -->
+              <svg class="slider-icon moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.3,2a10,10,0,0,0-1.9,19.5,10,10,0,0,0,11.3-11A10.08,10.08,0,0,1,12.3,2Z"/></svg>
+            </span>
+          </label>
+        </div>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open navigation menu">
+          <svg viewBox="0 0 24 24">
+            <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/>
+          </svg>
+        </button>
+
+        <button class="btn btn-primary" id="download-pdf" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+          Download PDF
+        </button>
+      </div>
+
+      <!-- Scroll Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="scroll-progress"></div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Off-Canvas Mobile Navigation Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <h3>Sections</h3>
+      <button class="drawer-close" id="drawer-close" aria-label="Close navigation menu">
+        <svg viewBox="0 0 24 24">
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="nav-group">
+      <div class="group-title">Menu</div>
+      <ul>
+        <li><a href="#home">Home Banner</a></li>
+        <li><a href="#section-a">A: Concept Cards</a></li>
+        <li><a href="#section-b">B: Comparative Analysis</a></li>
+        <li><a href="#section-c">C: Workflow Diagrams</a></li>
+        <li><a href="#section-d">D: Applications</a></li>
+        <li><a href="#section-e">E: Industry Insights</a></li>
+        <li><a href="#sustainability">Societal Impact</a></li>
+        <li><a href="#reflection">Reflection Note</a></li>
+        <li><a href="#matrix">Contribution Matrix</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- App Container (Sidebar + Content Panel) -->
+  <div class="app-container">
+    <!-- Desktop Left Sidebar -->
+    <nav class="sidebar-nav" aria-label="Desktop navigation">
+      <div class="nav-group">
+        <div class="group-title">Repository Overview</div>
+        <ul>
+          <li>
+            <a href="#home" class="active">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              Home / Intro
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="group-title">Concepts (Section A)</div>
+        <ul>
+          <li>
+            <a href="#section-a-preprocessing">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"/></svg>
+              Text Preprocessing
+            </a>
+          </li>
+          <li>
+            <a href="#section-a-engineering">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.6z"/></svg>
+              Feature Engineering
+            </a>
+          </li>
+          <li>
+            <a href="#section-a-representation">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z"/></svg>
+              Language Representation
+            </a>
+          </li>
+          <li>
+            <a href="#section-a-models">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+              Language Models
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="group-title">Analysis & Pipelines</div>
+        <ul>
+          <li>
+            <a href="#section-b">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v-2H5V5h5V3zm10 0h-5v2h5v14h-5v2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+              B: Comparative Tables
+            </a>
+          </li>
+          <li>
+            <a href="#section-c">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
+              C: SVG Workflows
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="group-title">Applications & Insights</div>
+        <ul>
+          <li>
+            <a href="#section-d">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+              D: Real-World Apps
+            </a>
+          </li>
+          <li>
+            <a href="#section-e">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+              E: Research & Timeline
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="group-title">Reflection & Context</div>
+        <ul>
+          <li>
+            <a href="#sustainability">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              Societal Impact
+            </a>
+          </li>
+          <li>
+            <a href="#reflection">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.58 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+              Student Reflection
+            </a>
+          </li>
+          <li>
+            <a href="#matrix">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 15h16v-2H4v2zm0 4h16v-2H4v2zm0-8h16V9H4v2zm0-6v2h16V5H4z"/></svg>
+              Contribution Matrix
+            </a>
+          </li>
+          <li>
+            <a href="#faq">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+              FAQs
+            </a>
+          </li>
+          <li>
+            <a href="#references">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+              References
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="content-panel" id="main-content">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb" aria-label="Breadcrumbs">
+        <a href="#home">Home</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="#section-a">Week 1 Repository</a>
+        <span class="divider" aria-hidden="true"></span>
+        <span id="breadcrumb-active">Introduction</span>
+      </nav>
+
+      <!-- Section: Home Hero -->
+      <section class="section-wrapper" id="home">
+        <div class="hero-banner">
+          <span class="hero-tag">NLP Study Guide</span>
+          <h2 class="hero-title">NLP Knowledge Artifact Repository</h2>
+          <p class="hero-subtitle">"Understanding Natural Language Processing from Text to Intelligence."</p>
+          <p class="hero-intro">
+            Natural Language Processing (NLP) sits at the critical intersection of Artificial Intelligence, Computer Science, and Linguistics. It enables computing machinery to process, decode, and generate human communications. This repository compiles the fundamental concepts covered in Week 1, breaking them down into structured concept logs, comparative matrices, SVG pipelines, and societal discussions.
+          </p>
+          <div class="hero-actions">
+            <a href="#section-a-preprocessing" class="btn btn-primary">
+              Explore Repository
+              <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 24 24">
+                <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+              </svg>
+            </a>
+            <a href="#section-b" class="btn btn-secondary">View Comparisons</a>
+          </div>
+        </div>
+
+        <!-- Statistics Panel -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <svg class="stat-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 data-count="21">0</h3>
+              <p>Core NLP Concepts</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <svg class="stat-icon" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 data-count="5">0</h3>
+              <p>Comparison Tables</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <svg class="stat-icon" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 data-count="3">0</h3>
+              <p>Workflow Pipelines</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 data-count="5">0</h3>
+              <p>Practical Applications</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Details & Overview -->
+        <div class="home-overview fade-in-scroll">
+          <div class="overview-main">
+            <h3>Learning Objectives & Overview</h3>
+            <p style="margin-bottom:1rem;">
+              Week 1 transitions from basic textual tokens to semantic representations. Computational systems cannot comprehend text in its raw format. Through text preprocessing and vector mapping, strings are converted into mathematical structures suitable for downstream algorithms.
+            </p>
+            <ul class="learning-objectives-list">
+              <li>Understand syntax curation methods including noise removal and segmentation.</li>
+              <li>Learn frequency-based heuristics vs contextual distribution mechanisms.</li>
+              <li>Analyze word-level mapping algorithms like Word2Vec and FastText.</li>
+              <li>Differentiate statistical models from neural representation networks.</li>
+            </ul>
+          </div>
+          <div class="overview-side">
+            <div class="outcome-box">
+              <h4>Learning Outcomes</h4>
+              <p style="font-size:0.88rem; color:var(--text-muted);">
+                By exploring this repository, students will master text pipeline assembly, compare algorithmic trade-offs (e.g. Stemming vs Lemmatization), and evaluate vocabulary encoding mechanics.
+              </p>
+            </div>
+            <div class="outcome-box" style="background:var(--hover-bg)">
+              <h4>Week 1 Highlight</h4>
+              <p style="font-size:0.88rem; color:var(--text-muted);">
+                A deep dive into word mapping metrics, showcasing how word representations moved from sparse One-Hot arrays to dense neural vector arrangements.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Navigation Cards -->
+        <div class="quick-nav-grid fade-in-scroll">
+          <a href="#section-a-preprocessing" class="quick-nav-card">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"/></svg>
+            <h4>Text Preprocessing</h4>
+            <p>Cleaning, tokenizing, and stem normalization.</p>
+          </a>
+          <a href="#section-a-engineering" class="quick-nav-card">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.6z"/></svg>
+            <h4>Feature Engineering</h4>
+            <p>Count metrics, term weighting, and TF-IDF.</p>
+          </a>
+          <a href="#section-a-representation" class="quick-nav-card">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z"/></svg>
+            <h4>Language representation</h4>
+            <p>One-hot matrices and neural embeddings.</p>
+          </a>
+          <a href="#section-a-models" class="quick-nav-card">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+            <h4>Language Models</h4>
+            <p>Statistical, neural, and transformer layers.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section A: Concept Cards -->
+      <section class="section-wrapper" id="section-a">
+        <div class="section-header">
+          <h2>Section A: Core Concept Documentation</h2>
+          <p>Exhaustive breakdown of 21 core NLP concepts. Click any card to expand comprehensive details.</p>
+        </div>
+
+        <!-- CATEGORY A1: Text Preprocessing -->
+        <div class="concepts-category-wrapper" id="section-a-preprocessing">
+          <h3 class="category-subtitle">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"/></svg>
+            Text Preprocessing Techniques
+          </h3>
+          
+          <div class="concept-cards-grid">
+            
+            <!-- 1. Sentence Segmentation -->
+            <div class="concept-card" id="card-segmentation">
+              <div class="card-top">
+                <h4 class="concept-title">Sentence Segmentation</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">The process of dividing a continuous block of text into distinct, logically complete sentences.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N)</span>
+                <span><strong>Impact:</strong> Critical for discourse analysis</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To isolate separate logical statements so downstream models (parsers, translators) can analyze structures within sentence-level boundaries.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Uses rule-based heuristics (regular expressions matching terminal punctuation like <code>.</code>, <code>?</code>, <code>!</code>) combined with abbreviation exception lists, or machine learning sequence models (like sentence boundary detectors in spaCy) to distinguish punctuation boundaries from abbreviation periods.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Scan text character by character.</li>
+                      <li>Identify punctuation terminals (e.g. period).</li>
+                      <li>Query exception dictionary (e.g. "Dr.", "Inc.", "e.g.").</li>
+                      <li>Look ahead at capitalization of the subsequent word.</li>
+                      <li>Emit segment index when a true boundary is verified.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "Visit Dr. Smith at 5 P.M. It's urgent!"<br><strong>Output:</strong> ["Visit Dr. Smith at 5 P.M.", "It's urgent!"]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Simple to execute, standardizes inputs, keeps downstream dependency parser workloads manageable.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Fails in conversational, unpunctuated social media text, or transcripts with zero punctuation formatting.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Document Summarization, Machine Translation, Coreference Resolution.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Naïve segmentation splits at every period, leading to failures. Robust modern tools utilize binary classifiers trained on token contexts to decide boundary splits.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Tokenization -->
+            <div class="concept-card" id="card-tokenization">
+              <div class="card-top">
+                <h4 class="concept-title">Tokenization</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">Segmenting a string of text into smaller structural units, such as words, terms, or subwords.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N)</span>
+                <span><strong>Impact:</strong> Fundamental entry step</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To break unstructured string data into discrete structural tokens that can be mapped to indices in a vocabulary dictionary.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Standard tokenization uses whitespace and punctuation rules. Advanced tokenization (e.g. Byte-Pair Encoding, WordPiece) splits rare words into sub-word units based on character frequency statistics to handle Out-Of-Vocabulary (OOV) terms.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Apply unicode normalization.</li>
+                      <li>Scan text to isolate whitespaces.</li>
+                      <li>Separate punctuation marks unless part of a contracting word (e.g. "don't").</li>
+                      <li>Emit array of token strings.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "Let's tokenize NLP."<br><strong>Output:</strong> ["Let", "'s", "tokenize", "NLP", "."]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Standardizes text inputs; sub-word tokenization completely eliminates the OOV token issue in transformers.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Language dependent; languages like Chinese or Japanese do not use spaces, requiring complex segmentation dictionaries.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Vocabulary construction, Lexical counts, Syntax parsing input pipeline.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Tokenization choices significantly impact downline vocabulary size and computing metrics. Wordpiece/BPE are current standards in Neural Language Models.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Case Normalization -->
+            <div class="concept-card" id="card-casenormalization">
+              <div class="card-top">
+                <h4 class="concept-title">Case Normalization</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">Converting all characters in a document to a uniform casing, typically lowercase.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N)</span>
+                <span><strong>Impact:</strong> Reduces vocabulary vocabulary noise</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To map variation spellings (e.g., "Apple", "apple", "APPLE") to a single token representation, drastically reducing dimensionality.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Applies character-level transformation mapping uppercase character indices to lowercase equivalents in ASCII/Unicode charts.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Read text streams.</li>
+                      <li>Inspect ASCII values of alphabetical characters.</li>
+                      <li>If value lies in uppercase boundaries (65-90), offset value by +32 to match lowercase range (97-122).</li>
+                      <li>Write back modified characters.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "The Python Language."<br><strong>Output:</strong> "the python language."</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Simplifies mapping, prevents split frequencies of identical words, decreases feature sparsity.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Loses semantic nuance. For example, "Apple" (company) gets merged with "apple" (fruit); "US" (United States) gets merged with "us" (pronoun).</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Search Indexes, Bag of Words models, Keyword matching systems.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Modern contextual transformers often use "cased" models to preserve capitalized entity signatures for Named Entity Recognition (NER).</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Stop-word Removal -->
+            <div class="concept-card" id="card-stopword">
+              <div class="card-top">
+                <h4 class="concept-title">Stop-word Removal</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">Filtering out highly frequent but semantically low-value words from a document.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N * M) lookup</span>
+                <span><strong>Impact:</strong> Focuses vocabulary on keywords</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To eliminate grammatical glue words (e.g. "the", "is", "at") so subsequent vector representation algorithms focus entirely on content-bearing keywords.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Compares parsed tokens against a precompiled set of domain stop-words, deleting tokens that yield positive search hits.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Load target vocabulary stop list.</li>
+                      <li>Iterate through tokenized document array.</li>
+                      <li>For each token, verify if it exists in the hash set list.</li>
+                      <li>If true, drop token. If false, retain.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "This is a great study guide"<br><strong>Output:</strong> ["great", "study", "guide"]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Reduces document noise, decreases feature vector counts, accelerates computational processing speeds.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Can destroy context when sentences contain negated qualifiers. For instance, "not good" might get transformed into ["good"].</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Information Retrieval, Topic Modeling, Document Classification.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Stop lists are highly domain specific. In sentiment tasks, removing words like "no", "not", or "very" destroys model classification accuracy.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Stemming -->
+            <div class="concept-card" id="card-stemming">
+              <div class="card-top">
+                <h4 class="concept-title">Stemming</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">A crude heuristic process that chops off the ends of words to reduce them to their approximate base stem form.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N)</span>
+                <span><strong>Impact:</strong> Quick grammatical reduction</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To quickly combine morphologically related word forms (e.g. "running", "runs") into a single index entry.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Applies a chain of rule-based suffix truncation patterns (like the Porter Stemmer rules) to strip common word endings (like "ing", "ly", "ed").</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Receive token string.</li>
+                      <li>Apply suffix matchers (e.g. if ending in "ational", replace with "ate").</li>
+                      <li>Apply step-by-step truncation rules.</li>
+                      <li>Output resulting sub-root string.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "studying studies studied"<br><strong>Output:</strong> ["studi", "studi", "studi"]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Highly speed efficient; does not require dictionary lookups; easy to scale.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Produces non-words (e.g. "studi") due to crude chopping. Subject to Overstemming (merging unrelated words like "organization" and "organ") and Understemming.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Search Engines indexing systems, Information Retrieval systems (Lucene).</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Developed by Martin Porter in 1980. The Porter Stemmer applies 5 sequential steps of rules to drop suffixes, yielding raw character stems.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 6. Lemmatization -->
+            <div class="concept-card" id="card-lemmatization">
+              <div class="card-top">
+                <h4 class="concept-title">Lemmatization</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">Reducing a word to its grammatically valid base form (lemma) using a dictionary database and part-of-speech context.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N * log M)</span>
+                <span><strong>Impact:</strong> High accuracy base mapping</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To normalize inflected word variants to a standard dictionary headword, preserving meaning accuracy.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Utilizes lexical databases (such as WordNet) combined with Part-Of-Speech (POS) tags to resolve ambiguous suffixes and return true canonical roots.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Compute the Part-Of-Speech tag for target token.</li>
+                      <li>Look up the word form and POS tag in database (e.g. WordNet).</li>
+                      <li>Find grammatical inflection exception mappings (e.g., "went" -> "go").</li>
+                      <li>Extract the canonical headword (lemma).</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "The cats were running"<br><strong>Output:</strong> ["the", "cat", "be", "run"]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Guarantees that base forms are actual words; maintains precise context (unlike stemming).</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Slow and computationally expensive; heavily reliant on accurate POS tagging and lookups.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Biomedical Text Mining, Question-Answering, Sentiment Analysis.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>While stemming operates on rule-based patterns, lemmatization runs dictionary lookup queries, ensuring morphological changes are mapped correctly.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 7. Noise Removal -->
+            <div class="concept-card" id="card-noiseremoval">
+              <div class="card-top">
+                <h4 class="concept-title">Noise Removal</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">Stripping non-textual or irrelevant content elements from raw data inputs.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N)</span>
+                <span><strong>Impact:</strong> Protects models from garbage tokens</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To eliminate formatting clutter (HTML tags, JSON brackets, Javascript snippets) that does not represent core linguistic content.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Employs parser algorithms or regular expression substitution tables to identify block patterns and strip them out of the character stream.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Load raw markup text.</li>
+                      <li>Execute HTML parser (e.g. BeautifulSoup) to strip tags.</li>
+                      <li>Apply regex patterns to detect and remove URLs.</li>
+                      <li>Remove metadata headers.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "&lt;p&gt;Visit &lt;a href='url'&gt;site&lt;/a&gt;.&lt;/p&gt;"<br><strong>Output:</strong> "Visit site."</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Ensures subsequent models only ingest clean text; decreases parsing errors.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Poor regex construction can cause over-deletion, stripping away valid text contents inside brackets.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Web scraping pipelines, PDF-to-Text parsing extraction.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Noise is highly relative. In web-scraping, CSS classes are noise, whereas in web accessibility tasks, structural tags are vital context clues.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 8. Text Cleaning -->
+            <div class="concept-card" id="card-textcleaning">
+              <div class="card-top">
+                <h4 class="concept-title">Text Cleaning</h4>
+                <span class="concept-badge">Preprocessing</span>
+              </div>
+              <p class="concept-def">The final stage of formatting text, including removing punctuation, standardizing emojis, and collapsing whitespace.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N)</span>
+                <span><strong>Impact:</strong> Solidifies text formats</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To establish clean Unicode formatting, standardizing text inputs before conversion into numerical representations.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Normalizes Unicode patterns (NFD to NFC), strips remaining non-alphanumeric punctuation, resolves spelling errors, and collapses multiple spaces.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Apply Unicode equivalence mapping to handle composite glyphs.</li>
+                      <li>Strip non-ASCII characters or resolve emojis.</li>
+                      <li>Remove punctuation marks (using translate mapping tables).</li>
+                      <li>Collapse multiple spaces to a single whitespace character.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Input:</strong> "Hello!!!   Let's study..."<br><strong>Output:</strong> "Hello Lets study"</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Standardizes syntax, ensures clean splits, and prevents duplicate feature listings.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Stripping all punctuation can make it difficult for syntax parsers to identify clause boundaries.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Data normalization, Sentiment classifier inputs, Pre-embedding stages.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Text cleaning is the overall term summarizing basic string sanitization. It requires careful design to avoid stripping semantic signals.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CATEGORY A2: Feature Engineering -->
+        <div class="concepts-category-wrapper" id="section-a-engineering">
+          <h3 class="category-subtitle">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.3C.5 6.7.9 9.8 2.9 11.8c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.6z"/></svg>
+            Feature Engineering & Text Vectorization
+          </h3>
+          
+          <div class="concept-cards-grid">
+            
+            <!-- 9. Bag of Words -->
+            <div class="concept-card" id="card-bow">
+              <div class="card-top">
+                <h4 class="concept-title">Bag of Words (BoW)</h4>
+                <span class="concept-badge">Feature Engineering</span>
+              </div>
+              <p class="concept-def">A sparse vector representation of a document based solely on the occurrence counts of its words.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(D * V)</span>
+                <span><strong>Impact:</strong> Simplifies document mapping</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To convert unstructured documents into fixed-length numeric vectors for machine learning classifiers.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Creates a global vocabulary set index. Each document is mapped to a vector where the index positions represent words, and the values represent token frequency counts.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Build a unique vocabulary set from all documents.</li>
+                      <li>Assign a fixed index to each unique word.</li>
+                      <li>Initialize a zero vector of vocabulary length for each document.</li>
+                      <li>Iterate through document tokens, incrementing index positions.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Vocab:</strong> ["cat", "dog", "run"]<br><strong>Text:</strong> "cat run cat"<br><strong>Vector:</strong> [2, 0, 1]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Extremely easy to implement; highly effective for basic document classification tasks.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Completely discards word order and syntax. Creates highly sparse, high-dimensional vectors that suffer from the curse of dimensionality.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Spam Detection filters, Basic Document Classification.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>BoW treats sentences as an unordered bag of tokens, meaning "dog bites man" and "man bites dog" yield identical vector coordinates.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 10. N-Grams -->
+            <div class="concept-card" id="card-ngrams">
+              <div class="card-top">
+                <h4 class="concept-title">N-Grams</h4>
+                <span class="concept-badge">Feature Engineering</span>
+              </div>
+              <p class="concept-def">A contiguous sequence of N items (characters or words) extracted from a given sample of text.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(N * L)</span>
+                <span><strong>Impact:</strong> Captures local word order</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To preserve local context and sequence order in statistical representation structures.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Uses sliding window offsets of size N over a token list, grouping sequential tokens together as unique features.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Tokenize target text into words or characters.</li>
+                      <li>Set window span parameter N (e.g. N=2 for bigrams).</li>
+                      <li>Slide the window one index position at a time.</li>
+                      <li>Combine tokens within the window span, emitting them as compound features.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Text:</strong> "Natural Language Processing"<br><strong>Bigrams (N=2):</strong> ["Natural Language", "Language Processing"]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Simple way to capture phrase patterns; helps resolve local modifier context (e.g. "not happy").</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Causes exponential vocabulary growth. A dataset with 10k unique words can produce millions of tri-grams, causing severe feature sparsity.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Autocomplete systems, Spelling correction, Statistical Language Models.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>N-grams are characterized as Unigrams (N=1), Bigrams (N=2), or Trigrams (N=3). Larger values of N require smoothing algorithms to manage zero counts.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 11. Term Frequency (TF) -->
+            <div class="concept-card" id="card-tf">
+              <div class="card-top">
+                <h4 class="concept-title">Term Frequency (TF)</h4>
+                <span class="concept-badge">Feature Engineering</span>
+              </div>
+              <p class="concept-def">A metric that measures how frequently a term occurs in a given document.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(D)</span>
+                <span><strong>Impact:</strong> Quantifies word relevance</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To quantify the relative importance of a word within the context of a single document.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Calculates the raw count of a word in a document, normalized by the total number of words in that document to prevent length bias.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Count occurrences of term <code>t</code> in document <code>d</code>.</li>
+                      <li>Sum all token counts in document <code>d</code>.</li>
+                      <li>Divide count of <code>t</code> by total token count.</li>
+                      <li>Optionally apply log-scaling to prevent large count spikes.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Doc:</strong> "nlp is cool, nlp is fun" (8 words)<br><strong>TF("nlp"):</strong> 2 / 8 = 0.25</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Provides a normalized scoring system; ensures longer documents don't dominate raw frequency metrics.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Scores generic words (like "is", "the") extremely high simply because they appear frequently, even though they carry little information.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Keyword search systems, Early text similarity algorithms.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>TF can be computed as raw count, Boolean frequency, or log-scaled: <code>1 + log(count)</code>. Log scaling mimics the human perception of frequency increases.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 12. Inverse Document Frequency (IDF) -->
+            <div class="concept-card" id="card-idf">
+              <div class="card-top">
+                <h4 class="concept-title">Inverse Document Frequency (IDF)</h4>
+                <span class="concept-badge">Feature Engineering</span>
+              </div>
+              <p class="concept-def">A metric that measures how common or rare a word is across an entire corpus of documents.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(V)</span>
+                <span><strong>Impact:</strong> Weights specificity of words</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To reduce the weight of universally common words and increase the weight of rare, highly informative terms.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Takes the log of the ratio of total documents to the number of documents containing the target word.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Count total documents <code>N</code> in corpus.</li>
+                      <li>Count documents <code>d</code> containing target term <code>t</code>.</li>
+                      <li>Divide <code>N</code> by document count of <code>t</code>.</li>
+                      <li>Apply natural log to ratio: <code>log(N / df(t))</code>.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Corpus:</strong> 1,000 documents.<br><strong>"nlp":</strong> in 10 docs. <strong>IDF:</strong> log(1000/10) = log(100) = 4.6<br><strong>"the":</strong> in 1000 docs. <strong>IDF:</strong> log(1000/1000) = 0</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Effectively penalizes common words, highlighting unique, subject-specific keywords.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Vulnerable to noise. Typographical errors that appear in only a single document get assigned very high IDF scores.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Search indexing systems, Document alignment, Feature selection.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>If a word appears in every single document in the corpus, its IDF score is exactly 0. This mathematically filters out stop-words without needing a hardcoded list.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 13. TF-IDF -->
+            <div class="concept-card" id="card-tfidf">
+              <div class="card-top">
+                <h4 class="concept-title">TF-IDF</h4>
+                <span class="concept-badge">Feature Engineering</span>
+              </div>
+              <p class="concept-def">A mathematical statistic that combines TF and IDF to reflect how important a word is to a document within a corpus.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(D * V)</span>
+                <span><strong>Impact:</strong> Classic vectorization model</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To represent documents as numerical vectors that emphasize rare, high-information keywords over common words.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Computes the mathematical product of a word's Term Frequency (TF) and its Inverse Document Frequency (IDF).</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Compute the normalized Term Frequency for a token in a document.</li>
+                      <li>Compute the Inverse Document Frequency for that token across the corpus.</li>
+                      <li>Multiply TF by IDF: <code>TF-IDF = TF * IDF</code>.</li>
+                      <li>Construct document vector, applying L2 normalization to handle varied document lengths.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>TF("nlp"):</strong> 0.25, <strong>IDF("nlp"):</strong> 4.6<br><strong>TF-IDF:</strong> 0.25 * 4.6 = 1.15</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Simple and computationally efficient; highlights relevant keywords while automatically suppressing background vocabulary noise.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Like Bag of Words, it ignores word order and syntactic structure. It cannot capture semantic relationships between words (e.g. "king" and "queen" are independent).</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Information Retrieval, Search Engines, Document Similarity matches.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>TF-IDF remains a strong baseline for search systems. Advanced search engines often use BM25, an evolution of TF-IDF that optimizes document length normalization.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CATEGORY A3: Language Representation -->
+        <div class="concepts-category-wrapper" id="section-a-representation">
+          <h3 class="category-subtitle">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z"/></svg>
+            Language Representation Models
+          </h3>
+          
+          <div class="concept-cards-grid">
+            
+            <!-- 14. One-Hot Encoding -->
+            <div class="concept-card" id="card-onehot">
+              <div class="card-top">
+                <h4 class="concept-title">One-Hot Encoding</h4>
+                <span class="concept-badge">Representation</span>
+              </div>
+              <p class="concept-def">Representing words as high-dimensional, binary vectors where only a single index position is set to 1.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(1) representation</span>
+                <span><strong>Impact:</strong> Simplest vector mapping</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To map categorical word tokens to distinct, isolated numeric indices that neural networks can process.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Constructs a vector of length equal to the vocabulary size. The vector contains all 0s, except for a 1 at the unique index assigned to that specific word.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Build a vocabulary index dictionary of size <code>V</code>.</li>
+                      <li>Assign a unique index position to each word.</li>
+                      <li>To represent a word, generate an array of size <code>V</code> filled with 0s.</li>
+                      <li>Set the value at the word's assigned index position to 1.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Vocab:</strong> ["cat", "dog", "fish"] (V=3)<br><strong>"dog" Vector:</strong> [0, 1, 0]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Extremely simple to implement; requires no model training; ensures every word representation is distinct.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Creates highly sparse, high-dimensional vectors. Assumes all words are completely independent, capturing zero semantic similarity (every word pair is orthogonal).</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Output layer target indices, Input pipelines for neural embeddings.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Because one-hot vectors are orthogonal, the dot product between any two distinct words is always 0. This means the model cannot learn that "cat" and "dog" are both animals.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 15. Word Embeddings -->
+            <div class="concept-card" id="card-wordembeddings">
+              <div class="card-top">
+                <h4 class="concept-title">Word Embeddings</h4>
+                <span class="concept-badge">Representation</span>
+              </div>
+              <p class="concept-def">Mapping words to dense, low-dimensional vectors of real numbers where geometrically close vectors represent semantically similar words.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(D) projection</span>
+                <span><strong>Impact:</strong> Core of deep learning NLP</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To represent words in a dense, continuous vector space where mathematical distance (e.g. cosine similarity) corresponds to semantic similarity.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Projects high-dimensional one-hot vectors into a lower-dimensional, dense continuous vector space. The values are weights learned during training.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Initialize a random weight matrix of size <code>V x D</code> (where D is the embedding dimension, typically 50-300).</li>
+                      <li>Pass one-hot indices into the matrix to retrieve corresponding dense vectors.</li>
+                      <li>Optimize vector weights using gradient descent on a proxy training task (e.g. predicting neighbor words).</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>"cat" Vector (D=3):</strong> [0.25, -0.47, 0.81]<br><strong>"dog" Vector (D=3):</strong> [0.22, -0.42, 0.79] (Highly similar coordinates)</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Dense representation avoids sparsity issues; captures complex semantic and syntactic relationships (analogies like "king - man + woman = queen").</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Requires large datasets to train effectively. Static embeddings assign a single vector to a word, failing to handle homonyms (e.g. "bank" of a river vs "bank" for money).</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Neural Network inputs, Semantic Search, Sentiment Classifiers.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Word embeddings are based on J.R. Firth's distributional hypothesis: "You shall know a word by the company it keeps." Words that appear in similar contexts are mapped to nearby vector coordinates.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 16. Word2Vec -->
+            <div class="concept-card" id="card-word2vec">
+              <div class="card-top">
+                <h4 class="concept-title">Word2Vec</h4>
+                <span class="concept-badge">Representation</span>
+              </div>
+              <p class="concept-def">A framework developed by Google that uses a shallow two-layer neural network to learn static word embeddings from massive text corpora.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(V) prediction</span>
+                <span><strong>Impact:</strong> Landmark embedding framework</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To efficiently learn high-quality, dense word vectors from large-scale datasets using proxy prediction tasks.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Trains a shallow neural network on one of two architectures: Continuous Bag of Words (CBOW, predicting a target word from context) or Skip-gram (predicting context words from a target word). Uses optimization tricks like Negative Sampling to scale training.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Slide a context window across the corpus.</li>
+                      <li>For Skip-gram: feed the target word to the input layer.</li>
+                      <li>Project to a hidden layer (representing the embedding).</li>
+                      <li>Predict surrounding context words.</li>
+                      <li>Update weight matrices via backpropagation using SGD.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Skip-Gram Input:</strong> "NLP" -> <strong>Predictions:</strong> ["is", "very", "interesting"]</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Highly scalable, learning representations from billions of words in hours; captures clear semantic analogies.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Static representations assign a single vector to each word, failing to handle polysemy. Cannot handle Out-of-Vocabulary (OOV) words at test time.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Recommendation systems, Text similarity matching, Neural network initialization.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Introduced by Tomas Mikolov at Google in 2013. By reframing embedding learning as a supervised prediction task, it bypassed slow, traditional matrix factorization methods.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 17. FastText -->
+            <div class="concept-card" id="card-fasttext">
+              <div class="card-top">
+                <h4 class="concept-title">FastText</h4>
+                <span class="concept-badge">Representation</span>
+              </div>
+              <p class="concept-def">An extension of Word2Vec developed by Facebook that represents words as bags of character n-grams to handle morphological variations and OOV terms.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(C) subword sum</span>
+                <span><strong>Impact:</strong> Solves Out-of-Vocabulary issue</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To learn embeddings that capture subword information, allowing the model to represent rare, morphologically rich, or completely unseen words.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Breaks words into character-level n-grams. The embedding of a word is computed as the sum of its character n-gram vectors, trained similarly to Word2Vec.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Split word into character n-grams (e.g. for "apple" with n=3: "&lt;ap", "app", "ppl", "ple", "le&gt;").</li>
+                      <li>Retrieve pre-trained vectors for each character n-gram.</li>
+                      <li>Sum n-gram vectors to construct final word representation.</li>
+                      <li>Optimize subword vectors during training using context prediction tasks.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Unseen Word:</strong> "super-interesting"<br><strong>FastText:</strong> Sums vectors of "super", "inter", "est", "ing", representing it accurately based on subwords.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Excellent at handling Out-of-Vocabulary words; works exceptionally well for morphologically rich languages like Turkish, German, or Finnish.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Significantly higher memory footprint compared to Word2Vec, as it must store millions of character n-gram vectors.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Spell checking, Text Classification, Handling noisy user-generated text (tweets).</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Released by Facebook AI Research (FAIR) in 2016. Because it operates at the character level, it can generate sensible vectors for typos (e.g. "nlp" vs "nlpp") by leveraging shared subword patterns.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 18. Contextual Embeddings -->
+            <div class="concept-card" id="card-contextual">
+              <div class="card-top">
+                <h4 class="concept-title">Contextual Embeddings</h4>
+                <span class="concept-badge">Representation</span>
+              </div>
+              <p class="concept-def">Dynamic word representations where the vector changes based on the surrounding sentence context.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(L^2) attention</span>
+                <span><strong>Impact:</strong> State-of-the-art accuracy</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To assign distinct, context-aware vectors to the same word based on how it is used in a sentence, resolving polysemy.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Uses deep sequence neural networks (BiLSTMs in ELMo, Self-Attention blocks in BERT) to process the entire sentence, updating each word's vector based on neighboring tokens.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Feed entire sentence tokens into the model.</li>
+                      <li>Pass tokens through sequence processing or self-attention layers.</li>
+                      <li>Each layer dynamically updates token vectors by weighting context.</li>
+                      <li>Extract the final layer hidden states as context-aware embeddings.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Sentences:</strong> "depositing money at the bank" vs "sitting on a river bank"<br><strong>Embeddings:</strong> Generates distinct vectors for "bank" based on context.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Completely resolves word sense ambiguity; captures complex syntax and semantic structures.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Extremely high computational cost; requires GPUs for real-time inference and massive datasets to train.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Modern Search Engines, Named Entity Recognition, Question Answering.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>ELMo (2018) introduced contextual embeddings using bidirectional LSTMs, which was quickly followed by BERT (2018), which popularized Transformer-based contextual embeddings.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CATEGORY A4: Language Models -->
+        <div class="concepts-category-wrapper" id="section-a-models">
+          <h3 class="category-subtitle">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+            Language Modeling Paradigms
+          </h3>
+          
+          <div class="concept-cards-grid">
+            
+            <!-- 19. Statistical Language Models -->
+            <div class="concept-card" id="card-slms">
+              <div class="card-top">
+                <h4 class="concept-title">Statistical Language Models</h4>
+                <span class="concept-badge">Language Models</span>
+              </div>
+              <p class="concept-def">Models that estimate the probability distribution of sequences of words using frequency statistics from a text corpus.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(V^N) lookup table</span>
+                <span><strong>Impact:</strong> Foundations of speech parsing</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To assign probabilities to sequences of words, allowing systems to predict the next word or evaluate the likelihood of a sentence.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Uses the Chain Rule of Probability combined with Markov Assumptions (simplifying context to the last N-1 words) to compute conditional probabilities from corpus frequency counts.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Collect a large text corpus.</li>
+                      <li>Count occurrences of individual words and sequences (n-grams).</li>
+                      <li>Compute conditional probability: <code>P(word_N | context) = Count(context + word_N) / Count(context)</code>.</li>
+                      <li>Apply smoothing (e.g. Kneser-Ney) to assign non-zero probability to unseen sequences.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Predict:</strong> "I love reading ..."<br><strong>SLM:</strong> Counts show "books" appears next 40% of the time, "news" 10%, "apples" 0.01%.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Highly explainable; quick to calculate on small corpora; simple mathematical foundation.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Suffers from data sparsity. If an N-gram is unseen during training, its probability is 0 without complex smoothing. It cannot capture long-range dependencies.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Speech Recognition, Machine Translation evaluation, Predictive keyboards.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Relies heavily on smoothing algorithms (like Good-Turing, Absolute Discounting, or Kneser-Ney) to distribute probability mass to unseen sequences, preventing model failure.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 20. Neural Language Models -->
+            <div class="concept-card" id="card-nlms">
+              <div class="card-top">
+                <h4 class="concept-title">Neural Language Models</h4>
+                <span class="concept-badge">Language Models</span>
+              </div>
+              <p class="concept-def">Models that predict word sequences using neural networks (like RNNs, LSTMs, or Feedforward nets) to learn continuous word representations.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(L * H^2) LSTM step</span>
+                <span><strong>Impact:</strong> Transition to deep sequence models</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To overcome the data sparsity limitation of statistical models by projecting words into a continuous space, allowing the model to generalize to unseen contexts.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Passes word embeddings through recurrent neural networks (RNNs/LSTMs) to track context state over time, using a Softmax layer to predict the probability distribution over the vocabulary.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Convert input context words to dense embedding vectors.</li>
+                      <li>Pass vectors sequentially through recurrent layers (LSTMs) to compute context state.</li>
+                      <li>Project the hidden state vector to vocabulary dimension via a dense layer.</li>
+                      <li>Apply Softmax to calculate next-word probabilities.</li>
+                      <li>Train parameters end-to-end using cross-entropy loss.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Predict:</strong> "The cat sat on the ..."<br><strong>NLM:</strong> Understands "mat" is highly likely because "sat" and "cat" are clustered close to sleeping spots.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Completely avoids the zero-probability problem (words are represented in continuous space); generalizes well to unseen sentences; captures longer dependencies than statistical models.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Computations are sequential, making training slow and difficult to parallelize on GPUs. Vulnerable to vanishing/exploding gradients over very long sequences.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Early Neural Machine Translation, Text generation, Dialogue systems.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Introduced by Yoshua Bengio et al. in 2003. It established the paradigm of jointly learning distributed word representations and sequence probabilities, laying the groundwork for modern LLMs.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 21. Transformer-based Representations -->
+            <div class="concept-card" id="card-transformers">
+              <div class="card-top">
+                <h4 class="concept-title">Transformer-based Representations</h4>
+                <span class="concept-badge">Language Models</span>
+              </div>
+              <p class="concept-def">State-of-the-art representations that use self-attention mechanisms to process all tokens in a sequence simultaneously, capturing long-range context.</p>
+              <div class="concept-meta-summary">
+                <span><strong>Complexity:</strong> O(L^2 * D) parallel attention</span>
+                <span><strong>Impact:</strong> Foundation of modern AI</span>
+              </div>
+              <div class="expanded-content">
+                <div class="card-grid-info">
+                  <div class="info-block">
+                    <h5>Purpose</h5>
+                    <p>To learn highly contextualized language representations that model relationships between all words in a sentence, regardless of distance, with extreme efficiency.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Working Principle</h5>
+                    <p>Replaces recurrence with Self-Attention, allowing tokens to query and focus on every other token in the sequence simultaneously, enabling massive GPU parallelization.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Step-by-Step</h5>
+                    <ul class="steps-list">
+                      <li>Add positional encodings to word embeddings to preserve word order.</li>
+                      <li>Compute Query, Key, and Value vectors for each token.</li>
+                      <li>Calculate Attention scores: <code>Softmax(Q * K^T / sqrt(d_k)) * V</code>.</li>
+                      <li>Pass outputs through Multi-Head Attention and Feed-Forward networks.</li>
+                      <li>Extract context-rich token representations.</li>
+                    </ul>
+                  </div>
+                  <div class="info-block">
+                    <h5>Example</h5>
+                    <p><strong>Sentence:</strong> "The animal didn't cross the street because it was too tired."<br><strong>Transformer:</strong> Self-attention resolves "it" directly to "animal" with a high attention score.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Advantages</h5>
+                    <p>Captures long-range dependencies across long documents; highly parallelizable on GPUs; state-of-the-art performance across virtually all NLP tasks.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Limitations</h5>
+                    <p>Attention mechanism scales quadratically with sequence length, causing high memory and computational costs for long documents.</p>
+                  </div>
+                  <div class="info-block">
+                    <h5>Applications</h5>
+                    <p>Large Language Models (GPT, Llama), Advanced Translation (Google Translate), Sentiment systems.</p>
+                  </div>
+                  <div class="key-notes-block">
+                    <h5>Key Academic Notes</h5>
+                    <p>Introduced in the landmark 2017 paper "Attention Is All You Need" by Vaswani et al. It discarded recurrence entirely, establishing the foundational architecture for all modern generative AI models.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-btn-wrapper">
+                <button class="btn-card-expand">
+                  Expand Details
+                  <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Section B: Comparative Analysis -->
+      <section class="section-wrapper" id="section-b">
+        <div class="section-header">
+          <h2>Section B: Comparative Analysis Matrices</h2>
+          <p>Detailed performance and structural comparison of primary NLP methodologies.</p>
+        </div>
+
+        <!-- Table 1: Stemming vs Lemmatization -->
+        <div class="table-wrapper fade-in-scroll">
+          <h3 class="table-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            Stemming vs. Lemmatization
+          </h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Comparison Aspect</th>
+                <th>Stemming</th>
+                <th>Lemmatization</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="property-col">Definition</td>
+                <td>Heuristic suffix chopping to produce raw base roots.</td>
+                <td>Morphological analysis returning canonical dictionary lemmas.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Working Mechanism</td>
+                <td>Rule-based truncation chains (e.g. Porter).</td>
+                <td>Dictionary databases (WordNet) + POS tagging context.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Complexity</td>
+                <td>O(N) - Fast, simple string operations.</td>
+                <td>O(N * log M) - Slower lookup operations.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Memory Usage</td>
+                <td>Minimal (no lookup datasets needed).</td>
+                <td>Medium to High (requires loading lexical databases).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Advantages</td>
+                <td>Extremely fast, easy to implement, reduces dimensions quickly.</td>
+                <td>High semantic accuracy; base forms are real words.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Limitations</td>
+                <td>Produces non-words; prone to overstemming and understemming.</td>
+                <td>Slow; requires accurate POS tagging, dependent on dictionary size.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Accuracy</td>
+                <td>Low to Medium (chopping loses semantic distinctions).</td>
+                <td>High (correctly maps went -> go, better -> good).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Performance</td>
+                <td>Fast (ideal for large indexing systems).</td>
+                <td>Moderate (performance cost increases with syntax parsing).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Applications</td>
+                <td>Search Engines (Lucene, Elasticsearch), basic index mapping.</td>
+                <td>Translators, chatbots, complex linguistics tasks.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 2: TF vs TF-IDF -->
+        <div class="table-wrapper fade-in-scroll">
+          <h3 class="table-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            Term Frequency (TF) vs. TF-IDF
+          </h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Comparison Aspect</th>
+                <th>Term Frequency (TF)</th>
+                <th>TF-IDF</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="property-col">Definition</td>
+                <td>Normalized count of a word within a single document.</td>
+                <td>Weighted score reflecting word relevance across a corpus.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Working Mechanism</td>
+                <td>Raw counts or log-scaled word occurrences.</td>
+                <td>Multiplication of Term Frequency by Inverse Document Frequency.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Complexity</td>
+                <td>O(D) - Simple local frequency scan.</td>
+                <td>O(D * V) - Requires scan across the entire corpus.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Memory Usage</td>
+                <td>Low (only stores counts for current document).</td>
+                <td>Medium (requires storing vocabulary IDF lookup index).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Advantages</td>
+                <td>Simple; good baseline for short document keyword search.</td>
+                <td>Filters out common noise words; highlights specific terms.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Limitations</td>
+                <td>Biased towards common grammatical words (stop-words).</td>
+                <td>Does not capture word order, grammar, or word synonyms.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Accuracy</td>
+                <td>Low (common words dilute true query intent).</td>
+                <td>Medium (strong keyword-based search relevance).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Performance</td>
+                <td>Extremely fast computational speeds.</td>
+                <td>Fast (requires precomputing corpus statistics).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Applications</td>
+                <td>Local statistics, raw text metrics, token metrics.</td>
+                <td>Information retrieval, search queries, document similarity.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 3: Word2Vec vs FastText -->
+        <div class="table-wrapper fade-in-scroll">
+          <h3 class="table-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            Word2Vec vs. FastText
+          </h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Comparison Aspect</th>
+                <th>Word2Vec</th>
+                <th>FastText</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="property-col">Definition</td>
+                <td>Static word embedding model predicting word contexts.</td>
+                <td>Subword embedding model representing words as n-grams.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Working Mechanism</td>
+                <td>Predicts neighbor words (Skip-gram/CBOW) at word level.</td>
+                <td>Predicts neighbor contexts using sums of subword character n-grams.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Complexity</td>
+                <td>O(V) - Straightforward word-vector dictionary mapping.</td>
+                <td>O(C) - Summing multiple character vectors per word.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Memory Usage</td>
+                <td>Low (only stores vocabulary-length vectors).</td>
+                <td>High (must store vectors for millions of character n-grams).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Advantages</td>
+                <td>Fast training; small memory footprint; clear vector analogies.</td>
+                <td>Handles OOV words; handles typos and morphological endings.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Limitations</td>
+                <td>Cannot handle OOV words; cannot represent typos.</td>
+                <td>Slow to train; high RAM/disk storage requirement.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Accuracy</td>
+                <td>Medium (fails on spelling variations and rare terms).</td>
+                <td>High (robustly models spelling variations and rare roots).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Performance</td>
+                <td>Fast lookup.</td>
+                <td>Moderate lookup (requires summing subword vectors on query).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Applications</td>
+                <td>Word clustering, entity similarity, neural embedding inputs.</td>
+                <td>Spellchecking, text classification, search systems.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 4: Statistical vs Neural LMs -->
+        <div class="table-wrapper fade-in-scroll">
+          <h3 class="table-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            Statistical vs. Neural Language Models
+          </h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Comparison Aspect</th>
+                <th>Statistical LMs</th>
+                <th>Neural LMs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="property-col">Definition</td>
+                <td>Probability distribution over sequences from corpus counts.</td>
+                <td>Probability projection models using continuous representations.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Working Mechanism</td>
+                <td>Chain rule + Markov assumptions + n-gram smoothing.</td>
+                <td>Deep Neural Networks (LSTMs, RNNs) + Softmax predictions.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Complexity</td>
+                <td>O(V^N) - Exponential scale based on sequence length.</td>
+                <td>O(L * H^2) - Scales with hidden dimension layers.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Memory Usage</td>
+                <td>Exponentially high for larger values of N.</td>
+                <td>Medium (dependent on model parameters, not sequence length).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Advantages</td>
+                <td>Very fast training; highly transparent and explainable.</td>
+                <td>Avoids zero-probability issue; scales without sparsity.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Limitations</td>
+                <td>Poor generalization; struggles with long sequence contexts.</td>
+                <td>Black-box architecture; computationally slow and GPU-dependent.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Accuracy</td>
+                <td>Low (struggles on sequences beyond bigrams/trigrams).</td>
+                <td>High (captures syntactic patterns and longer context).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Performance</td>
+                <td>Fast table lookups.</td>
+                <td>Heavy GPU computation required for inference.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Applications</td>
+                <td>Speech transcription scoring, text complexity evaluation.</td>
+                <td>Text generators, machine translation, text classification.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 5: One-Hot vs Word Embeddings -->
+        <div class="table-wrapper fade-in-scroll">
+          <h3 class="table-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            One-Hot Encoding vs. Word Embeddings
+          </h3>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Comparison Aspect</th>
+                <th>One-Hot Encoding</th>
+                <th>Word Embeddings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="property-col">Definition</td>
+                <td>High-dimensional, sparse binary vector representation.</td>
+                <td>Low-dimensional, dense continuous real-number vectors.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Working Mechanism</td>
+                <td>Maps each word token to its unique vocabulary index.</td>
+                <td>Projects word indices into a learned continuous space.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Complexity</td>
+                <td>O(1) - Instant index mapping.</td>
+                <td>O(D) - Dense vector lookup and projection.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Memory Usage</td>
+                <td>Extremely sparse (inefficient allocation of memory).</td>
+                <td>Highly efficient (stores compact, dense values).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Advantages</td>
+                <td>Simple; no model training; completely deterministic.</td>
+                <td>Captures semantic similarities; low dimensionality.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Limitations</td>
+                <td>Assumes words are independent; suffers from sparsity.</td>
+                <td>Requires training on massive corpora; black box.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Accuracy</td>
+                <td>Low (cannot capture semantic similarities).</td>
+                <td>High (geometrically groups related concepts).</td>
+              </tr>
+              <tr>
+                <td class="property-col">Performance</td>
+                <td>Requires zero training, but inefficient for downstream models.</td>
+                <td>Lookup is fast; provides significant downstream speedups.</td>
+              </tr>
+              <tr>
+                <td class="property-col">Applications</td>
+                <td>Vocabulary indices, simple categorization.</td>
+                <td>Input representation for neural network models.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- Section C: Workflow Diagrams -->
+      <section class="section-wrapper" id="section-c">
+        <div class="section-header">
+          <h2>Section C: Interactive Workflow Pipelines</h2>
+          <p>Visualizing sequential NLP pipelines. Hover over steps to inspect data transformations.</p>
+        </div>
+
+        <!-- DIAGRAM 1: Complete Text Preprocessing Pipeline -->
+        <div class="diagram-card fade-in-scroll">
+          <h3>Diagram 1: Text Preprocessing Pipeline</h3>
+          <p>Chronological sequence converting noisy, raw text inputs into sanitized language tokens.</p>
+          
+          <div class="svg-container">
+            <svg width="850" height="120" viewBox="0 0 850 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#6F4E37"/>
+                </marker>
+              </defs>
+
+              <!-- Node 1: Raw Text -->
+              <g class="svg-step" transform="translate(10, 35)">
+                <rect x="0" y="0" width="85" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="2"/>
+                <text x="42" y="29" font-family="Poppins" font-size="10" font-weight="700" fill="#3E2C23" text-anchor="middle">Raw Text</text>
+              </g>
+
+              <line x1="97" y1="60" x2="113" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 2: Segmentation -->
+              <g class="svg-step" transform="translate(115, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Sentence</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Segmentation</text>
+              </g>
+
+              <line x1="207" y1="60" x2="223" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 3: Tokenization -->
+              <g class="svg-step" transform="translate(225, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="29" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Tokenization</text>
+              </g>
+
+              <line x1="317" y1="60" x2="333" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 4: Normalization -->
+              <g class="svg-step" transform="translate(335, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Case</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Normalization</text>
+              </g>
+
+              <line x1="427" y1="60" x2="443" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 5: Stop-word -->
+              <g class="svg-step" transform="translate(445, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Stop-word</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Removal</text>
+              </g>
+
+              <line x1="537" y1="60" x2="553" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 6: Noise -->
+              <g class="svg-step" transform="translate(555, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Noise</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Removal</text>
+              </g>
+
+              <line x1="647" y1="60" x2="663" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 7: Lemmatization -->
+              <g class="svg-step" transform="translate(665, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Stemming /</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Lemmatizing</text>
+              </g>
+
+              <line x1="755" y1="60" x2="771" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 8: Clean Text -->
+              <g class="svg-step" transform="translate(773, 35)">
+                <rect x="0" y="0" width="70" height="50" rx="8" fill="#F3ECE0" stroke="#6F4E37" stroke-width="2"/>
+                <text x="35" y="29" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Clean Text</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- DIAGRAM 2: Feature Engineering Pipeline -->
+        <div class="diagram-card fade-in-scroll">
+          <h3>Diagram 2: Feature Engineering Pipeline</h3>
+          <p>Transforming processed token lists into mathematical TF-IDF frequency matrices.</p>
+          
+          <div class="svg-container">
+            <svg width="720" height="120" viewBox="0 0 720 120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Node 1: Clean Text -->
+              <g class="svg-step" transform="translate(10, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="2"/>
+                <text x="45" y="29" font-family="Poppins" font-size="10" font-weight="700" fill="#3E2C23" text-anchor="middle">Clean Text</text>
+              </g>
+
+              <line x1="102" y1="60" x2="128" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 2: Bag of Words -->
+              <g class="svg-step" transform="translate(130, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Bag of</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Words</text>
+              </g>
+
+              <line x1="222" y1="60" x2="248" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 3: TF -->
+              <g class="svg-step" transform="translate(250, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Term</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Frequency</text>
+              </g>
+
+              <line x1="340" y1="60" x2="368" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 4: IDF -->
+              <g class="svg-step" transform="translate(370, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Inverse Doc</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Frequency</text>
+              </g>
+
+              <line x1="460" y1="60" x2="488" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 5: TF-IDF -->
+              <g class="svg-step" transform="translate(490, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="29" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">TF-IDF</text>
+              </g>
+
+              <line x1="580" y1="60" x2="608" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 6: Feature Vector -->
+              <g class="svg-step" transform="translate(610, 35)">
+                <rect x="0" y="0" width="100" height="50" rx="8" fill="#F3ECE0" stroke="#6F4E37" stroke-width="2"/>
+                <text x="50" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Feature</text>
+                <text x="50" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Vector</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- DIAGRAM 3: Text-to-Vector Transformation -->
+        <div class="diagram-card fade-in-scroll">
+          <h3>Diagram 3: Text-to-Vector Transformation</h3>
+          <p>End-to-end operational pipeline from raw string ingestion to machine learning model deployment.</p>
+          
+          <div class="svg-container">
+            <svg width="820" height="120" viewBox="0 0 820 120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Node 1: Raw Text -->
+              <g class="svg-step" transform="translate(10, 35)">
+                <rect x="0" y="0" width="80" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="2"/>
+                <text x="40" y="29" font-family="Poppins" font-size="10" font-weight="700" fill="#3E2C23" text-anchor="middle">Raw Text</text>
+              </g>
+
+              <line x1="92" y1="60" x2="108" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 2: Cleaning -->
+              <g class="svg-step" transform="translate(110, 35)">
+                <rect x="0" y="0" width="85" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="42" y="29" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Cleaning</text>
+              </g>
+
+              <line x1="197" y1="60" x2="213" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 3: Tokenization -->
+              <g class="svg-step" transform="translate(215, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="29" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Tokenization</text>
+              </g>
+
+              <line x1="307" y1="60" x2="323" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 4: Representation -->
+              <g class="svg-step" transform="translate(325, 35)">
+                <rect x="0" y="0" width="100" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="50" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Word</text>
+                <text x="50" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Representation</text>
+              </g>
+
+              <line x1="427" y1="60" x2="443" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 5: Embeddings -->
+              <g class="svg-step" transform="translate(445, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="29" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Embeddings</text>
+              </g>
+
+              <line x1="537" y1="60" x2="553" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 6: Feature Vector -->
+              <g class="svg-step" transform="translate(555, 35)">
+                <rect x="0" y="0" width="90" height="50" rx="8" fill="#FFFDF8" stroke="#6F4E37" stroke-width="1.5"/>
+                <text x="45" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Feature</text>
+                <text x="45" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Vector</text>
+              </g>
+
+              <line x1="647" y1="60" x2="663" y2="60" stroke="#6F4E37" stroke-width="2" marker-end="url(#arrow)" class="svg-arrow"/>
+
+              <!-- Node 7: ML Model -->
+              <g class="svg-step" transform="translate(665, 35)">
+                <rect x="0" y="0" width="145" height="50" rx="8" fill="#F3ECE0" stroke="#6F4E37" stroke-width="2"/>
+                <text x="72" y="24" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Machine Learning</text>
+                <text x="72" y="36" font-family="Poppins" font-size="9" font-weight="700" fill="#3E2C23" text-anchor="middle">Classifier Model</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Section D: Real-World Applications -->
+      <section class="section-wrapper" id="section-d">
+        <div class="section-header">
+          <h2>Section D: Real-World Applications</h2>
+          <p>How the fundamental concepts of Week 1 power industrial software applications.</p>
+        </div>
+
+        <div class="apps-grid">
+          
+          <!-- 1. Search Engines -->
+          <div class="app-card fade-in-scroll">
+            <div class="app-header">
+              <div class="app-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.5L20.5 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"/></svg>
+              </div>
+              <h3>Search Engines</h3>
+            </div>
+            <div class="app-body">
+              <div class="app-info-row">
+                <h4>Overview</h4>
+                <p>Systems that index web documents and return the most relevant pages matching a user's search query.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Relevant NLP Concepts</h4>
+                <p>Tokenization, Stemming, Case Normalization, TF-IDF, Word Embeddings.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Why They Are Needed</h4>
+                <p>To normalize search queries and indexed web pages to identical base tokens, allowing fast keyword matching and semantic alignment.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Expected Benefits</h4>
+                <p>Drastically reduces mismatch failures (e.g. search for "studying" matches page containing "study"); returns conceptually related pages even if keywords don't match exactly.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Real-World Example</h4>
+                <p>Google Search utilizes BERT to analyze query context, mapping search strings directly to semantic concept spaces.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Elasticsearch</span>
+                  <span class="tech-tag">Lucene</span>
+                  <span class="tech-tag">BERT</span>
+                  <span class="tech-tag">Vector Indices</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Chatbots -->
+          <div class="app-card fade-in-scroll">
+            <div class="app-header">
+              <div class="app-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m-9 12H5v-2h6v2zm6-4H5V8h12v2z"/></svg>
+              </div>
+              <h3>Conversational Agents</h3>
+            </div>
+            <div class="app-body">
+              <div class="app-info-row">
+                <h4>Overview</h4>
+                <p>Automated software systems designed to simulate interactive human conversation for customer support or task execution.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Relevant NLP Concepts</h4>
+                <p>Sentence Segmentation, Tokenization, Contextual Embeddings, Transformer-based models.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Why They Are Needed</h4>
+                <p>To parse user inputs, extract dialogue intent, maintain conversational state, and generate natural, grammatically correct responses.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Expected Benefits</h4>
+                <p>24/7 automated support scale; immediate response times; resolves common queries without manual human intervention.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Real-World Example</h4>
+                <p>Customer service bots on retail sites (e.g. Amazon Customer Assistant) parse intent to track packages or initiate returns.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Rasa</span>
+                  <span class="tech-tag">Dialogflow</span>
+                  <span class="tech-tag">GPT-4o</span>
+                  <span class="tech-tag">NodeJS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Sentiment Analysis -->
+          <div class="app-card fade-in-scroll">
+            <div class="app-header">
+              <div class="app-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 16H7v-2h10v2zm-2.5-6c-.83 0-1.5-.67-1.5-1.5S13.67 9 14.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-5 0c-.83 0-1.5-.67-1.5-1.5S9.67 9 10.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+              </div>
+              <h3>Sentiment Analysis</h3>
+            </div>
+            <div class="app-body">
+              <div class="app-info-row">
+                <h4>Overview</h4>
+                <p>Classifying the emotional tone behind a body of text, evaluating if user sentiment is positive, negative, or neutral.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Relevant NLP Concepts</h4>
+                <p>Text Cleaning, Stop-word Removal (carefully calibrated), TF-IDF, N-Grams, Word Embeddings.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Why They Are Needed</h4>
+                <p>To convert qualitative user reviews or social posts into numeric features that classifiers use to measure public sentiment trends.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Expected Benefits</h4>
+                <p>Enables brands to monitor reputation in real-time; processes customer reviews at scale; alerts support teams to critical user complaints.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Real-World Example</h4>
+                <p>Financial sentiment systems analyze earnings call transcripts and tweets to predict stock market movements.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Scikit-learn</span>
+                  <span class="tech-tag">VADER</span>
+                  <span class="tech-tag">RoBERTa</span>
+                  <span class="tech-tag">Python</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Machine Translation -->
+          <div class="app-card fade-in-scroll">
+            <div class="app-header">
+              <div class="app-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M12.87 15.07L10.33 12.56L10.36 12.53C12.1 10.59 13.34 8.36 14.07 6H17V4H10V2H8V4H1V6H12.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8H4.69C5.42 9.63 6.42 11.17 7.67 12.56L2.58 17.58L4 19L9 14L13 18L12.87 15.07M18.5 10H16.5L12 22H14L15.12 19H19.87L21 22H23L18.5 10M15.88 17L17.5 12.67L19.12 17H15.88Z"/></svg>
+              </div>
+              <h3>Machine Translation</h3>
+            </div>
+            <div class="app-body">
+              <div class="app-info-row">
+                <h4>Overview</h4>
+                <p>Translating documents or speech transcripts from one language to another while preserving semantic meaning.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Relevant NLP Concepts</h4>
+                <p>Tokenization (BPE subwords), Contextual Embeddings, Transformer-based sequence models.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Why They Are Needed</h4>
+                <p>To align representations between different syntax systems in a shared vector space, mapping semantic meanings across languages.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Expected Benefits</h4>
+                <p>Removes global communication barriers; enables fast translation of business and medical documents.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Real-World Example</h4>
+                <p>Google Translate uses deep sequence-to-sequence transformers to translate across 130+ languages in real time.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">HuggingFace</span>
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">T5 Encoder</span>
+                  <span class="tech-tag">GPUs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Text Summarization -->
+          <div class="app-card fade-in-scroll">
+            <div class="app-header">
+              <div class="app-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+              </div>
+              <h3>Text Summarization</h3>
+            </div>
+            <div class="app-body">
+              <div class="app-info-row">
+                <h4>Overview</h4>
+                <p>Condensing long documents into short, informative summaries that highlight key points.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Relevant NLP Concepts</h4>
+                <p>Sentence Segmentation, TF-IDF (extractive), Contextual Embeddings, Transformers (generative).</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Why They Are Needed</h4>
+                <p>To identify the most informative sentences in a document or generate concise new summaries using encoder-decoder networks.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Expected Benefits</h4>
+                <p>Drastically reduces reading workloads; automatically extracts key takeaways from long research reports or news articles.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Real-World Example</h4>
+                <p>Financial platforms use summarization to condense lengthy corporate earnings filings into bulleted updates for investors.</p>
+              </div>
+              <div class="app-info-row">
+                <h4>Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">BART</span>
+                  <span class="tech-tag">Pegasus</span>
+                  <span class="tech-tag">NLTK Parser</span>
+                  <span class="tech-tag">LangChain</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section E: Research & Industry Insights -->
+      <section class="section-wrapper" id="section-e">
+        <div class="section-header">
+          <h2>Section E: Research & Industry Insights</h2>
+          <p>Chronological milestones showing the evolution of NLP from local algorithms to global generative AI.</p>
+        </div>
+
+        <div class="timeline">
+          
+          <!-- Timeline Item 1: Transformer Advancements -->
+          <div class="timeline-item fade-in-scroll">
+            <span class="timeline-badge">Research Milestone</span>
+            <div class="timeline-card">
+              <h3>Transformer Advancements</h3>
+              <p>The paradigm shift that replaced recurrence with parallel self-attention networks.</p>
+              <button class="btn-timeline-toggle">
+                View Details
+                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+              </button>
+              <div class="timeline-details">
+                <div class="timeline-details-row"><strong>Purpose:</strong> Solve the bottleneck of sequential RNN training and improve long-range dependencies.</div>
+                <div class="timeline-details-row"><strong>Features:</strong> Multi-Head Self-Attention, positional encodings, feed-forward layers.</div>
+                <div class="timeline-details-row"><strong>Advantages:</strong> Highly parallelizable on GPUs; processes entire sentences at once.</div>
+                <div class="timeline-details-row"><strong>Importance:</strong> Replaced LSTMs, establishing the architecture that powers modern generative models.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: spaCy Framework -->
+          <div class="timeline-item fade-in-scroll">
+            <span class="timeline-badge">Open-Source Tool</span>
+            <div class="timeline-card">
+              <h3>spaCy NLP Library</h3>
+              <p>The standard open-source framework for building industrial-grade NLP pipelines.</p>
+              <button class="btn-timeline-toggle">
+                View Details
+                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+              </button>
+              <div class="timeline-details">
+                <div class="timeline-details-row"><strong>Purpose:</strong> Provide high-performance NLP tools for production software pipelines.</div>
+                <div class="timeline-details-row"><strong>Features:</strong> Tokenization, POS Tagging, dependency parsing, Named Entity Recognition (NER), pre-trained vectors.</div>
+                <div class="timeline-details-row"><strong>Advantages:</strong> Written in Cython; fast execution speeds; opinionated design.</div>
+                <div class="timeline-details-row"><strong>Importance:</strong> Moved NLP from slow academic tools to fast, reliable production pipelines.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: Google Search Search Integration -->
+          <div class="timeline-item fade-in-scroll">
+            <span class="timeline-badge">Industrial Application</span>
+            <div class="timeline-card">
+              <h3>Google Search (BERT Upgrade)</h3>
+              <p>Integrating contextual representations directly into global search query indexing.</p>
+              <button class="btn-timeline-toggle">
+                View Details
+                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+              </button>
+              <div class="timeline-details">
+                <div class="timeline-details-row"><strong>Purpose:</strong> Understand the conversational nuances behind user search queries.</div>
+                <div class="timeline-details-row"><strong>Features:</strong> Bidirectional contextual mapping of queries against indexed web pages.</div>
+                <div class="timeline-details-row"><strong>Advantages:</strong> Processes words in context rather than treating queries as independent keywords.</div>
+                <div class="timeline-details-row"><strong>Importance:</strong> Significantly improved search result relevance for natural language queries.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4: ChatGPT -->
+          <div class="timeline-item fade-in-scroll">
+            <span class="timeline-badge">Consumer Milestone</span>
+            <div class="timeline-card">
+              <h3>ChatGPT (OpenAI GPT)</h3>
+              <p>The consumer AI launch that brought conversational generative models to the mainstream.</p>
+              <button class="btn-timeline-toggle">
+                View Details
+                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+              </button>
+              <div class="timeline-details">
+                <div class="timeline-details-row"><strong>Purpose:</strong> Provide a conversational AI assistant that can write, code, and answer questions.</div>
+                <div class="timeline-details-row"><strong>Features:</strong> Reinforcement Learning from Human Feedback (RLHF), context windows, code execution.</div>
+                <div class="timeline-details-row"><strong>Advantages:</strong> General-purpose utility; high conversational fluency.</div>
+                <div class="timeline-details-row"><strong>Importance:</strong> Sparked the generative AI wave, showing the power of scaling Transformer networks.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 5: RAG Advancements -->
+          <div class="timeline-item fade-in-scroll">
+            <span class="timeline-badge">Recent Research</span>
+            <div class="timeline-card">
+              <h3>Retrieval-Augmented Generation (RAG)</h3>
+              <p>Combining the parametric knowledge of LLMs with real-time vector search data.</p>
+              <button class="btn-timeline-toggle">
+                View Details
+                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+              </button>
+              <div class="timeline-details">
+                <div class="timeline-details-row"><strong>Purpose:</strong> Eliminate LLM hallucinations and integrate proprietary or real-time data sources.</div>
+                <div class="timeline-details-row"><strong>Features:</strong> Vector embeddings, dense retrieval databases, dynamic context injection.</div>
+                <div class="timeline-details-row"><strong>Advantages:</strong> Updates model knowledge without retraining; allows tracing sources.</div>
+                <div class="timeline-details-row"><strong>Importance:</strong> The current architectural standard for deploying LLMs in corporate environments.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section: Sustainability & Societal Impact -->
+      <section class="section-wrapper" id="sustainability">
+        <div class="section-header">
+          <h2>Sustainability & Societal Impact of NLP</h2>
+          <p>Analyzing how language technology drives inclusivity, accessibility, and sustainable development.</p>
+        </div>
+
+        <div class="sustainability-wrapper fade-in-scroll">
+          <div class="sustainability-article">
+            <p>
+              Natural Language Processing has evolved from a specialized academic discipline into a cornerstone of societal inclusion and global accessibility. By bridge-building the communications gap between human speech and computing systems, NLP plays a pivotal role in democratizing access to information, citizen services, and educational resources. This technology directly aligns with the United Nations Sustainable Development Goals (SDGs), particularly Goal 4 (Quality Education), Goal 8 (Decent Work and Economic Growth), and Goal 10 (Reduced Inequalities).
+            </p>
+
+            <div class="sustainability-grid">
+              <div class="sustain-card">
+                <!-- SVG Icon: Globe -->
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <h4>Global Inclusivity</h4>
+                <p>Regional language translations provide rural communities access to vital government services, crop information, and medical updates in local dialects.</p>
+              </div>
+
+              <div class="sustain-card">
+                <!-- SVG Icon: Accessibility -->
+                <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+                <h4>Accessibility Tech</h4>
+                <p>TTS engines, text simplifiers, and screen readers empower visually and cognitively impaired users to interact with digital platforms.</p>
+              </div>
+
+              <div class="sustain-card">
+                <!-- SVG Icon: Book Open -->
+                <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.58 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                <h4>Educational Inclusion</h4>
+                <p>NLP readability models and tutoring bots adapt materials to suit individual learner reading levels, democratizing tutoring resources globally.</p>
+              </div>
+            </div>
+
+            <p>
+              One of the most profound impacts of NLP is in <strong>Language Accessibility</strong>. Through sub-word tokenization and language modeling, researchers can now build translation systems for low-resource regional languages that historically lacked large training datasets. This prevents language extinction and connects marginalized populations to global networks.
+            </p>
+            <p>
+              Furthermore, in <strong>Healthcare and Public Services</strong>, natural language interfaces allow citizens to query healthcare directories or submit complaints without needing advanced digital literacy. In educational contexts, speech synthesis and grammar analysis tools serve as essential assistive technologies, ensuring children with reading difficulties (e.g. dyslexia) do not fall behind. As language models grow more efficient, minimizing carbon footprint during training is key to ensuring the sustainability of language technologies.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Student Reflection -->
+      <section class="section-wrapper" id="reflection">
+        <div class="section-header">
+          <h2>Student Learning Reflections</h2>
+          <p style="font-family:var(--font-body); font-style:normal;">Personal observations on key learnings, challenges, and future paths.</p>
+        </div>
+
+        <div class="reflections-container fade-in-scroll">
+          
+          <!-- Student 1 -->
+          <div class="reflection-card">
+            <h4>Alex Rivera</h4>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem; font-style:italic;">"Deep dive into text normalizations."</p>
+            <ul class="reflection-list">
+              <li><strong>What I Learned:</strong> How cleaning, stop-word logic, and lemmatization reduce feature sparsity.</li>
+              <li><strong>Challenges Faced:</strong> Calibrating stop lists to prevent losing contextual negatives.</li>
+              <li><strong>Skills Gained:</strong> Regex pattern building and pipeline configurations in spaCy.</li>
+              <li><strong>Future Improvements:</strong> Explore sub-word tokenize algorithms.</li>
+            </ul>
+          </div>
+
+          <!-- Student 2 -->
+          <div class="reflection-card">
+            <h4>Sam Chen</h4>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem; font-style:italic;">"Understanding vector mapping."</p>
+            <ul class="reflection-list">
+              <li><strong>What I Learned:</strong> Moving from sparse One-Hot vectors to dense Word2Vec representations.</li>
+              <li><strong>Challenges Faced:</strong> Grasping negative sampling optimizations.</li>
+              <li><strong>Skills Gained:</strong> Embedding models and cosine distance math.</li>
+              <li><strong>Future Improvements:</strong> Evaluate contextual BERT layers.</li>
+            </ul>
+          </div>
+
+          <!-- Student 3 -->
+          <div class="reflection-card">
+            <h4>Jordan Taylor</h4>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem; font-style:italic;">"Evolution of language modeling."</p>
+            <ul class="reflection-list">
+              <li><strong>What I Learned:</strong> Transition from statistical n-gram probabilities to neural models.</li>
+              <li><strong>Challenges Faced:</strong> Understanding smoothing math in SLMs.</li>
+              <li><strong>Skills Gained:</strong> Designing probability calculations.</li>
+              <li><strong>Future Improvements:</strong> Train self-attention layers from scratch.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section: Contribution Matrix -->
+      <section class="section-wrapper" id="matrix">
+        <div class="section-header">
+          <h2>Project Contribution Matrix</h2>
+          <p>Responsibilities and task division among repository collaborators.</p>
+        </div>
+
+        <div class="table-wrapper fade-in-scroll">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Concept Cards</th>
+                <th>Comparative Analysis</th>
+                <th>Workflow Diagrams</th>
+                <th>Reflection Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 700;">Alex Rivera</td>
+                <td>Text Preprocessing Cards (1 - 8)</td>
+                <td>Stemming vs. Lemmatization, TF vs. TF-IDF</td>
+                <td>Diagram 1: Preprocessing Pipeline</td>
+                <td>Wrote reflection on text normalization issues.</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Sam Chen</td>
+                <td>Feature Engineering & Vectors (9 - 18)</td>
+                <td>Word2Vec vs. FastText, One-Hot vs. Embeddings</td>
+                <td>Diagram 2: Feature Engineering</td>
+                <td>Wrote reflection on vector space math.</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Jordan Taylor</td>
+                <td>Language Models (19 - 21)</td>
+                <td>Statistical vs. Neural LMs</td>
+                <td>Diagram 3: Text-to-Vector Pipeline</td>
+                <td>Wrote reflection on probability sequence networks.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: FAQs -->
+      <section class="section-wrapper" id="faq">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>Quick explanations for common NLP architecture questions.</p>
+        </div>
+
+        <div class="faq-grid fade-in-scroll">
+          <div class="faq-item">
+            <div class="faq-question">
+              Why does Stemming yield non-words while Lemmatization yields real dictionary entries?
+              <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+            </div>
+            <div class="faq-answer">
+              Stemming uses raw, rule-based character chopping (e.g. dropping "ing", "es") without understanding word structure. Lemmatization performs complete morphological lookups using a dictionary database (WordNet) and Part-of-Speech context to return the true, grammatically correct base form (lemma).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How does TF-IDF eliminate common stop-words without a hardcoded exclusion list?
+              <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+            </div>
+            <div class="faq-answer">
+              IDF (Inverse Document Frequency) measures term rarity: <code>log(N / df)</code>. If a word like "the" appears in every document (df = N), the ratio is 1, and <code>log(1) = 0</code>. Multiplying TF by an IDF of 0 results in a TF-IDF score of 0, automatically filtering out common stop-words.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What makes FastText better than Word2Vec for morphologically rich languages?
+              <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+            </div>
+            <div class="faq-answer">
+              Word2Vec assigns a single vector to a word, treating it as an indivisible unit. FastText breaks words into character-level n-grams. By training on subwords, it can generate sensible vectors for rare inflections (e.g. German compound words) or unseen words based on shared character roots.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Why did the NLP field transition from LSTMs to Transformer Self-Attention?
+              <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+            </div>
+            <div class="faq-answer">
+              LSTMs process tokens sequentially, meaning training cannot be parallelized across GPUs, creating a computational bottleneck. Transformers process all tokens simultaneously using Self-Attention, enabling massive parallelization and better modeling of long-range context.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: References -->
+      <section class="section-wrapper" id="references">
+        <div class="section-header">
+          <h2>APA-Style Academic References</h2>
+          <p>APA bibliography formatting referencing foundational papers, frameworks, and textbooks.</p>
+        </div>
+
+        <div class="sustainability-wrapper fade-in-scroll">
+          <ul style="list-style:none; padding:0; margin:0; font-size:0.95rem; line-height:1.8;">
+            <li style="margin-bottom:1rem; padding-left:2rem; text-indent:-2rem;">
+              Bird, S., Klein, E., & Loper, E. (2009). <i>Natural language processing with Python: Analyzing text with the natural language toolkit</i>. O'Reilly Media.
+            </li>
+            <li style="margin-bottom:1rem; padding-left:2rem; text-indent:-2rem;">
+              Honnibal, M., & Montani, I. (2017). <i>spaCy 2: Natural language processing with Cython and unlabeled data</i>. industrial-strength NLP library.
+            </li>
+            <li style="margin-bottom:1rem; padding-left:2rem; text-indent:-2rem;">
+              Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient estimation of word representations in vector space. <i>arXiv preprint arXiv:1301.3781</i>.
+            </li>
+            <li style="margin-bottom:1rem; padding-left:2rem; text-indent:-2rem;">
+              Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... & Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. <i>Journal of Machine Learning Research</i>, 12, 2825-2830.
+            </li>
+            <li style="margin-bottom:1rem; padding-left:2rem; text-indent:-2rem;">
+              Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. <i>Advances in Neural Information Processing Systems</i>, 30, 5998-6008.
+            </li>
+            <li style="margin-bottom:1rem; padding-left:2rem; text-indent:-2rem;">
+              Wolf, T., Debut, L., Sanh, V., Chaumond, J., Delangue, C., Moi, A., ... & Rush, A. M. (2020). Transformers: State-of-the-art natural language processing. <i>Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations</i>, 38-45.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Contact / Project Submission Section -->
+      <section class="section-wrapper" id="contact">
+        <div class="section-header">
+          <h2>Project Submission & Contact</h2>
+          <p>Submit questions, review notes, or project forks to the course coordinators.</p>
+        </div>
+
+        <div class="contact-section-grid fade-in-scroll">
+          <div class="contact-info-panel">
+            <h3>Academic Repository Admin</h3>
+            <p style="font-size:0.95rem; margin-bottom:1.5rem;">
+              This repository is maintained by the NLP Lab Group for Course Assignment 102. For grading guidelines or team coordination queries, reach out using the administrative contact details.
+            </p>
+            <ul class="contact-details-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>NLP Lab Unit, Section B, Room 402</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>nlp-repository-week1@college.edu</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>+1 (555) 019-2834</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-form-panel">
+            <form id="submission-form">
+              <div class="form-group">
+                <label for="form-name">Name / Student ID</label>
+                <input type="text" id="form-name" class="form-control" placeholder="Jane Doe / S100234" required>
+              </div>
+              <div class="form-group">
+                <label for="form-email">Academic Email</label>
+                <input type="email" id="form-email" class="form-control" placeholder="jane.doe@college.edu" required>
+              </div>
+              <div class="form-group">
+                <label for="form-category">Inquiry Subject</label>
+                <select id="form-category" class="form-control">
+                  <option>Select Option</option>
+                  <option>Concept Card Clarification</option>
+                  <option>Pipeline Suggestion</option>
+                  <option>Reflection Log Update</option>
+                  <option>Admin / Grading Query</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="form-msg">Message / Correction Proposal</label>
+                <textarea id="form-msg" class="form-control" rows="4" placeholder="Type your inquiry details..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Submit Review Query</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo-desc">
+        <div class="logo-area" style="margin-bottom:1rem;">
+          <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 19H11V17H13V19ZM13 15H11V7H13V15Z"/>
+          </svg>
+          <h1 style="font-size:1.2rem; margin:0;">NLP Repository</h1>
+        </div>
+        <p>A comprehensive documentation guide for Natural Language Processing concepts and vector space pipelines.</p>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4>Core Concepts</h4>
+        <ul>
+          <li><a href="#card-segmentation">Text Preprocessing</a></li>
+          <li><a href="#card-bow">Feature Engineering</a></li>
+          <li><a href="#card-onehot">Word Representations</a></li>
+          <li><a href="#card-slms">Language Models</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4>Documentation</h4>
+        <ul>
+          <li><a href="#section-b">Comparison Matrices</a></li>
+          <li><a href="#section-c">Pipeline Flows</a></li>
+          <li><a href="#references">APA References</a></li>
+          <li><a href="#matrix">Collaborator Matrix</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://spacy.io/" target="_blank" rel="noopener">spaCy Docs</a></li>
+          <li><a href="https://www.nltk.org/" target="_blank" rel="noopener">NLTK Org</a></li>
+          <li><a href="https://huggingface.co/" target="_blank" rel="noopener">HuggingFace Portal</a></li>
+          <li><a href="https://scikit-learn.org/" target="_blank" rel="noopener">Scikit-Learn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 NLP Lab Group. Released under MIT Academic License.</p>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="#home">Back to top</a>
+        <a href="#references">Grading Criteria</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back-to-Top Floating Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Scroll back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
