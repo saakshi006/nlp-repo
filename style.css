@@ -14,21 +14,21 @@
   --border-color: #E6D8C3;
   --hover-bg: #F0E8DC;
   --badge-bg: #F3ECE0;
-  
+
   --shadow-sm: 0 2px 8px rgba(111, 78, 55, 0.04);
   --shadow-md: 0 8px 20px rgba(111, 78, 55, 0.08);
   --shadow-lg: 0 16px 36px rgba(111, 78, 55, 0.12);
-  
+
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  
+
   --header-height: 70px;
   --sidebar-width: 300px;
-  
+
   --font-headings: 'Playfair Display', Georgia, serif;
   --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
-  
+
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -44,7 +44,7 @@
   --border-color: #3E3029;
   --hover-bg: #372D28;
   --badge-bg: #352B26;
-  
+
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
@@ -90,7 +90,12 @@ body {
   background: var(--secondary-brown);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-headings);
   font-weight: 700;
   margin-bottom: 0.5em;
@@ -249,7 +254,7 @@ header {
   width: 20px;
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .slider-icon {
@@ -266,11 +271,11 @@ header {
   fill: #8E7156;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--primary-brown);
 }
 
-input:checked + .slider::before {
+input:checked+.slider::before {
   transform: translateX(26px);
 }
 
@@ -855,7 +860,8 @@ input:checked + .slider::before {
   fill: var(--primary-brown);
 }
 
-.info-block p, .info-block li {
+.info-block p,
+.info-block li {
   font-size: 0.9rem;
   color: var(--text-color);
 }
@@ -904,7 +910,8 @@ input:checked + .slider::before {
   font-size: 0.9rem;
 }
 
-.comparison-table th, .comparison-table td {
+.comparison-table th,
+.comparison-table td {
   padding: 1rem 1.2rem;
   border-bottom: 1px solid var(--border-color);
 }
@@ -1438,86 +1445,7 @@ input:checked + .slider::before {
   font-weight: bold;
 }
 
-/* Contact / Submission Section */
-.contact-section-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 3rem;
-}
 
-.contact-info-panel {
-  background-color: var(--badge-bg);
-  border: 1px solid var(--border-color);
-  padding: 2.5rem;
-  border-radius: var(--radius-md);
-}
-
-.contact-info-panel h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-brown);
-}
-
-.contact-details-list {
-  list-style: none;
-  margin-top: 1.5rem;
-}
-
-.contact-details-list li {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 0.95rem;
-}
-
-.contact-details-list li svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--primary-brown);
-}
-
-.contact-form-panel {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  padding: 2.5rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: var(--text-color);
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  outline: none;
-  transition: var(--transition);
-}
-
-.form-control:focus {
-  border-color: var(--primary-brown);
-  box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.15);
-}
-
-textarea.form-control {
-  resize: vertical;
-}
 
 /* Footer Section */
 footer {
@@ -1636,6 +1564,7 @@ footer {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1662,25 +1591,27 @@ footer {
   .app-container {
     padding: 0 1.5rem;
   }
-  
+
   .sidebar-nav {
-    display: none; /* Hide standard sidebar on smaller laptops and tablets */
+    display: none;
+    /* Hide standard sidebar on smaller laptops and tablets */
   }
-  
+
   .content-panel {
     margin-left: 0;
     max-width: 100%;
     padding: 2.5rem 0;
   }
-  
+
   .mobile-nav-toggle {
-    display: block; /* Show hamburger toggle */
+    display: block;
+    /* Show hamburger toggle */
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .reflections-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1691,55 +1622,56 @@ footer {
   .hero-title {
     font-size: 2.2rem;
   }
-  
+
   .home-overview {
     grid-template-columns: 1fr;
   }
-  
-  .concept-cards-grid, .apps-grid {
+
+  .concept-cards-grid,
+  .apps-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .concept-card.expanded {
     grid-column: span 1;
   }
-  
+
   .card-grid-info {
     grid-template-columns: 1fr;
   }
-  
+
   .key-notes-block {
     grid-column: span 1;
   }
-  
+
   .timeline::before {
     left: 40px;
   }
-  
+
   .timeline-item {
     width: 100%;
     padding-left: 80px;
     padding-right: 0;
   }
-  
+
   .timeline-item:nth-child(odd) {
     text-align: left;
     left: 0;
   }
-  
+
   .timeline-item::after {
     left: 30px !important;
     right: auto !important;
   }
-  
+
   .timeline-item:nth-child(odd) .timeline-badge {
     margin-left: 0;
   }
-  
+
   .sustainability-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-section-grid {
     grid-template-columns: 1fr;
   }
@@ -1749,24 +1681,25 @@ footer {
   header {
     padding: 0 1rem;
   }
-  
+
   .search-container {
-    display: none; /* Hide search box in smaller mobile viewport to prevent clutter */
+    display: none;
+    /* Hide search box in smaller mobile viewport to prevent clutter */
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .quick-nav-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .footer-inner {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     gap: 1rem;
@@ -1835,6 +1768,7 @@ footer {
    Print / PDF Styles
    ========================================================================== */
 @media print {
+
   /* Reset background and colors for printing */
   :root {
     --bg-color: #ffffff;
@@ -1941,7 +1875,10 @@ footer {
     border: 1px solid #999999 !important;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     page-break-after: avoid;
   }
 }
